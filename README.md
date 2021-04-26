@@ -1,4 +1,4 @@
-# Basic installations and command required to run the application in following order:
+# Basic set up and cmd are required for Bulk Mail sender email:
 
 > Install latest version of python3
 
@@ -11,3 +11,10 @@
 >     Command to run the Django server “python manage.py run server”
    
 >  	_Install scheduler crontab_:
+     
+>       Pip install Django-crontab
+       
+>       Make sure run this command every time CRONJOBS  is changed “python manage.py crontab add”
+
+>       Use the following command to check active CRONJOBS  “python manage.py crontab show”
+
