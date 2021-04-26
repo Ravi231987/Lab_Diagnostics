@@ -17,4 +17,10 @@
 >       Make sure run this command every time CRONJOBS  is changed “python manage.py crontab add”
 
 >       Use the following command to check active CRONJOBS  “python manage.py crontab show”
+       
+
+# Methods to Implement bulk email by uploading CSV file:
+
+> Create CSV file to upload having  recipient’s emails, Sender email ID, Subject ,body 
+
 
