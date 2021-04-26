@@ -19,13 +19,15 @@
 >       Use the following command to check active CRONJOBS  “python manage.py crontab show”
        
 
-# Methods to Implement bulk email by uploading CSV file:
+#  Postman Url and Method to Implement bulk email by uploading CSV file:
 
 > _Create CSV file to upload having  recipient’s emails, Sender email ID, Subject ,body_
 
 >  _POST API, to upload csv, and send bulk mail by parsing the CSV._
   
->       Postman Url: http://127.0.0.1:8080/api/email_api/upload_csv, form-data, attach file.csv in body.
+>       **Postman Url**: http://127.0.0.1:8080/api/email_api/upload_csv, form-data, attach file.csv in body.
+
+> **Below Methods are used :**
 
 >       Method name "def upload_csv" to send the email in asynchronous mode
        
@@ -39,8 +41,31 @@
 > crop.py is the python script to send the email to admin every day at 9PM, by calculating the count stored in DBSqlite for last 24 hours(1 day).
 
 # DBSqlite is used as database to store the stats of the email send by uploading the csv having attribute below 
-> count : to stored the number of sucessful email send by per csv
-> DataTime : 
+
+> **count** : _to stored the number of successful email send by per csv_
+
+> **DataTime** : _to store the time of successful email send by per csv_
+
+> _"Database object defination can be found under model.py"_
+> 
+# Below configuartion has been added to setting.py
+
+> **Email**
+
+>EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
+
+>EMAIL_HOST = 'smtp.gmail.com'
+
+>EMAIL_USE_TLS = True
+
+>EMAIL_PORT = 587
+
+> **Auth User Email Id and Password should be configured, to send the mail.**
+
+>EMAIL_HOST_USER = 'host_mail_id'
+
+>EMAIL_HOST_PASSWORD = 'host_password*'
+
       
 
 
