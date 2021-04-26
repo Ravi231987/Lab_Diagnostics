@@ -1,4 +1,4 @@
-# Basic set up and cmd are required for Bulk Mail sender email:
+# Basic set up and cmd are required for Bulk Mail sender:
 
 > Install latest version of python3
 
