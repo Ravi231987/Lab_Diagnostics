@@ -25,7 +25,7 @@
 
 >  _POST API, to upload csv, and send bulk mail by parsing the CSV._
   
->       **Postman Url**: http://127.0.0.1:8080/api/email_api/upload_csv, form-data, attach file.csv in body.
+>       Postman Url: "http://127.0.0.1:8080/api/email_api/upload_csv", form-data, attach file.csv in body.
 
 > **Below Methods are used :**
 
@@ -50,21 +50,28 @@
 > 
 # Below configuartion has been added to setting.py
 
-> **Email**
+ > **Email**
 
->EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
+ >EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
 
->EMAIL_HOST = 'smtp.gmail.com'
+ >EMAIL_HOST = 'smtp.gmail.com'
 
->EMAIL_USE_TLS = True
+ >EMAIL_USE_TLS = True
 
->EMAIL_PORT = 587
+ >EMAIL_PORT = 587
 
-> **Auth User Email Id and Password should be configured, to send the mail.**
+ > **Auth User Email Id and Password should be configured, to send the mail.**
 
->EMAIL_HOST_USER = 'host_mail_id'
+ >EMAIL_HOST_USER = 'host_mail_id'
 
->EMAIL_HOST_PASSWORD = 'host_password*'
+ >EMAIL_HOST_PASSWORD = 'host_password*'
+
+
+> **Cron settings to call the cron jobs at 9PM to send the notification to Admin at 9PM**
+>
+CRONJOBS = [
+    ('* 21 * * *', 'email_api.cron.daily_mail_stats', '>> /Users/glalwani/BitBucket/django-rest-api-master/DjangoRestApi/Log.log')
+]
 
       
 
