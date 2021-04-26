@@ -72,8 +72,8 @@
 CRONJOBS = [
     ('* 21 * * *', 'email_api.cron.daily_mail_stats', '>> /Users/glalwani/BitBucket/django-rest-api-master/DjangoRestApi/Log.log')
 ]
-
-     >**Thank you have a Great Day**
+>
+**Thank you have a Great Day**
 
 
 
