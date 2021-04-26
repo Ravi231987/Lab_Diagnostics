@@ -8,13 +8,13 @@
  
 >     Use the following command  to check the version installed “python -m django –version” 
     
->     Command to run the Django server “python manage.py run server”
+>     Command to run the Django server “python manage.py run server 8080”
    
 >  	_Install scheduler crontab_:
      
 >       Pip install Django-crontab
        
->       Make sure run this command every time CRONJOBS  is changed “python manage.py crontab add”
+>       Make sure run this command every time CRONJOBS is changed or newly added “python manage.py crontab add”
 
 >       Use the following command to check active CRONJOBS  “python manage.py crontab show”
        
@@ -67,7 +67,7 @@
  >EMAIL_HOST_PASSWORD = 'host_password*'
 
 
-> **Cron settings to call the cron jobs at 9PM to send the notification to Admin at 9PM**
+> **Cron settings to call the cron jobs at 9PM to send the notification to Admin Everyday**
 >
 CRONJOBS = [
     ('* 21 * * *', 'email_api.cron.daily_mail_stats', '>> /Users/glalwani/BitBucket/django-rest-api-master/DjangoRestApi/Log.log')
