@@ -21,7 +21,7 @@
 
 #  Postman Url and Method to Implement bulk email by uploading CSV file:
 
-> _Create CSV file to upload having  recipient’s emails, Sender email ID, Subject ,body_
+> _Create CSV file to upload having  [recipient’s emails, Sender email ID, Subject ,body,Password]_
 
 >  _POST API, to upload csv, and send bulk mail by parsing the CSV._
   
