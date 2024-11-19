@@ -1,0 +1,57 @@
+name: Deploy AWS Infrastructure using Terraform
+
+# Trigger the workflow manually via GitHub UI
+on:
+  workflow_dispatch:  # This will allow manual triggering from the GitHub UI
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # Use an Ubuntu runner for this job
+
+    steps:
+      # Step 1: Checkout the repository code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Step 2: Set up Terraform
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: '1.5.0'  # Specify the Terraform version you need
+
+      # Step 3: Cache Terraform provider plugins to speed up future runs
+      - name: Cache Terraform providers
+        uses: actions/cache@v2
+        with:
+          path: ~/.terraform.d/plugin-cache
+          key: ${{ runner.os }}-terraform-${{ hashFiles('**/*.tf') }}
+          restore-keys: |
+            ${{ runner.os }}-terraform-
+
+      # Step 4: Set up AWS credentials
+      - name: Set up AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: 'us-east-1'  # Specify the AWS region to deploy in (adjust as necessary)
+
+      # Step 5: Install Terraform dependencies (initialize the Terraform configuration)
+      - name: Terraform Init
+        run: |
+          terraform init  # Initialize Terraform with AWS provider
+
+      # Step 6: Run Terraform plan (this will show what changes Terraform will make)
+      - name: Terraform Plan
+        run: |
+          terraform plan -out=tfplan
+
+      # Step 7: Run Terraform apply to deploy infrastructure (using the generated plan)
+      - name: Terraform Apply
+        run: |
+          terraform apply -auto-approve tfplan  # Apply the changes without prompting
+
+      # Step 8: Output the Terraform state (optional, for debugging)
+      - name: Terraform Output
+        run: |
+          terraform output
