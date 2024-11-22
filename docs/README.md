@@ -1,6 +1,6 @@
 # Lab Diagnostics
 
-This repository contains code and resources for the **Lab Diagnostics** project. The goal is to streamline and automate diagnostic workflows for laboratories, enabling efficient and accurate data analysis.
+This repository contains prototype code and resources for the **Lab Diagnostics** project. The goal is to streamline and automate diagnostic workflows for laboratories, enabling efficient and accurate data analysis.
 
 ## Key Features
 
